@@ -22,11 +22,11 @@
 
 function preload() {
   game.input.keyboard.addCallbacks(this, onDown);
-  drawScore();
-  drawLives();
   game.input.onDown.addOnce(function(e) {
     startGame();
   });
+  drawScore();
+  drawLives();
   game.debug.text( "Click to start", game.world.centerX - 100, game.world.centerY);
 }
 

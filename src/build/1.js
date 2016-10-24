@@ -1,5 +1,5 @@
 // letter fall speed
-var Speed = 150;
+var Speed = 120;
 
 // maximum number of letters on screen at once
 var MaxLettersOnScreen = 5;
@@ -17,10 +17,10 @@ var Font = "Times New Roman";
 var ExplosionColor = "red";
 
 // density of explosion
-var ExplosionParticles = 200;
+var ExplosionParticles = 40;
 
 // explosion duration
-var ExplosionTime = 1000;
+var ExplosionTime = 250;
 
 // number of attempts per game
 var Lives = 3;
@@ -55,11 +55,11 @@ var LifeFontColor = "green";
 
 function preload() {
   game.input.keyboard.addCallbacks(this, onDown);
-  drawScore();
-  drawLives();
   game.input.onDown.addOnce(function(e) {
     startGame();
   });
+  drawScore();
+  drawLives();
   game.debug.text( "Click to start", game.world.centerX - 100, game.world.centerY);
 }
 
