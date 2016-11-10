@@ -26,7 +26,7 @@ function drawLetterOnScreen(letter) {
 function dropSprite(sprite) {
   game.physics.enable(sprite, Phaser.Physics.ARCADE);
   sprite.enableBody = true;
-  sprite.body.velocity.y = 40;
+  sprite.body.velocity.y = 100;
   sprite.checkWorldBounds = true;
   sprite.events.onOutOfBounds.add(function(sprite){
     if (typeof(outOfBounds) == "function") {
