@@ -12,6 +12,10 @@ gulp.task("two", function() {
   return gulp.src("2.js").pipe(gulp.dest("build"));
 });
 
-gulp.task("default", ["one", "two"]);
+gulp.task("three", function() {
+  return gulp.src("3.js").pipe(gulp.dest("build"));
+});
+
+gulp.task("default", ["one", "two", "three"]);
 
 gulp.watch('*.js', ["default"]);

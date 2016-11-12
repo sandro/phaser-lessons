@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="build/phaser.min.js"></script>
+    <script src="build/3.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+// Generated //
+
+function drawLetterOnScreen(letter, x, y) {
+  var text = game.add.text(x, y, letter);
+  text.anchor.set(0.5);
+  text.fontSize = 50;
+  text.fill = "#ffffff";
+  return text;
+}
+
+function dropSprite(sprite) {
+  game.physics.enable(sprite, Phaser.Physics.ARCADE);
+  sprite.enableBody = true;
+  sprite.body.velocity.y = 100;
+  sprite.checkWorldBounds = true;
+  sprite.events.onOutOfBounds.add(function(sprite){
+    if (typeof(outOfBounds) == "function") {
+      outOfBounds(sprite);
+    }
+  }, this);
+}
+
+function create() {
+}
+
+function update() {
+}
+
+function render() {
+}
+
+if (!game) {
+  var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+}
+    </script>
+  </body>
+</html>
