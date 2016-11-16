@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "oNfGLApZ.js",
-  "dependencies": {},
+  "dependencies": {
+    "gulp-connect": "^5.0.0"
+  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0"
