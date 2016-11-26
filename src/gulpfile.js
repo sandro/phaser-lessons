@@ -17,7 +17,11 @@ gulp.task("three", function() {
   return gulp.src("3.js").pipe(gulp.dest("build"));
 });
 
-gulp.task("compile", ["one", "two", "three"]);
+gulp.task("four", function() {
+  return gulp.src("4.js").pipe(gulp.dest("build"));
+});
+
+gulp.task("compile", ["one", "two", "three", "four"]);
 
 gulp.task("watch", function() {
   gulp.watch('*.js', ["compile"]);
