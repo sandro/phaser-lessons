@@ -1,3 +1,4 @@
+// bg image source: https://www.scbwi.org/wp-content/uploads/2016/06/november-snow-original.png
 function preload() {
   game.load.image('flake1', 'img/flake1.png');
   game.load.image('flake2', 'img/flake2.png');
