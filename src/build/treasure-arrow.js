@@ -15,9 +15,8 @@ function update() {
   }
 }
 
-function selectCurrentObject(event) {
-  var index = Number.parseInt(String.fromCharCode(event.keyCode));
-  item = sprites[index - 1];
+function changeItem(event, index) {
+  item = sprites[index];
 }
 
 function preload() {
@@ -30,11 +29,11 @@ function preload() {
 
   arrows = game.input.keyboard.createCursorKeys();
 
-  game.input.keyboard.addKey(Phaser.Keyboard.ONE).onDown.add(selectCurrentObject);
-  game.input.keyboard.addKey(Phaser.Keyboard.TWO).onDown.add(selectCurrentObject);
-  game.input.keyboard.addKey(Phaser.Keyboard.THREE).onDown.add(selectCurrentObject);
-  game.input.keyboard.addKey(Phaser.Keyboard.FOUR).onDown.add(selectCurrentObject);
-  game.input.keyboard.addKey(Phaser.Keyboard.FIVE).onDown.add(selectCurrentObject);
+  game.input.keyboard.addKey(Phaser.Keyboard.ONE).onDown.add(changeItem, this, 0, 0);
+  game.input.keyboard.addKey(Phaser.Keyboard.TWO).onDown.add(changeItem, this, 0, 1);
+  game.input.keyboard.addKey(Phaser.Keyboard.THREE).onDown.add(changeItem, this, 0, 2);
+  game.input.keyboard.addKey(Phaser.Keyboard.FOUR).onDown.add(changeItem, this, 0, 3);
+  game.input.keyboard.addKey(Phaser.Keyboard.FIVE).onDown.add(changeItem, this, 0, 4);
 }
 
 function drawItems() {
