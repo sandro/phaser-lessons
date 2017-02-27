@@ -4,7 +4,7 @@ var rainDirection = 1;
 var rainSaved = 0;
 var velocity = 12;
 var rainAmount = 1;
-var rainLifespan = 1500;
+var rainLifespan = 1000;
 var GameTime = 20;
 var rainDrop;
 var GameScoreText,TimerText;
@@ -15,6 +15,7 @@ var SingleSplashParticles = 20;
 var SplashLifespan = 500;
 var SplashYRange = 0;
 var SplashXRange = 0;
+var MaxSplashSize = 20;
 
 var LeakMaxSpeed = 500;
 
@@ -96,8 +97,8 @@ function preload() {
 
   splashEmitter = game.add.emitter(0, 0, 40);
   splashEmitter.width = 50;
-  splashEmitter.makeParticles(makeRainDrop(10), 0);
-  splashEmitter.minParticleScale = 0.4;
+  splashEmitter.makeParticles(makeRainDrop(MaxSplashSize), 0);
+  splashEmitter.minParticleScale = 0.15;
   splashEmitter.maxParticleScale = 1;
   splashEmitter.setYSpeed(-250 - SplashYRange, 0 + SplashYRange);
   splashEmitter.setXSpeed(-50 - SplashXRange, 50 + SplashXRange);
