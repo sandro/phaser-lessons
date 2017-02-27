@@ -1,4 +1,3 @@
-var sprites = [];
 var arrows, item, bucket, emitter, cloud, pipe1, pipe2, pipe3, pipe4;
 var rainDirection = 1;
 var rainSaved = 0;
@@ -68,20 +67,21 @@ function update() {
     return;
   }
 
-  var timeLeft = GameTime - Math.floor(game.time.now / 1000);
-  if (timeLeft <= 5) {
+  if (GameTime <= 5) {
     TimerText.fill = "red";
   }
-  if (timeLeft <= 0) {
+  if (GameTime <= 0) {
     drawGameOver();
   }
-  TimerText.text = timeLeft;
+  TimerText.text = GameTime;
 
   tick();
   game.physics.arcade.collide(emitter, bucket, bucketCollide);
 }
 
 function preload() {
+  // game.load.baseURL = 'https://sandro.github.io/phaser-lessons/src/img';
+  // game.load.crossOrigin = 'anonymous';
   game.load.image('bucket', 'img/bucket.png');
   game.load.image("pipe", "img/pipe.png");
   var rainDrop = makeRainDrop(20);
@@ -115,17 +115,6 @@ function makePipes() {
   pipe4 = pipeGroup.create(pipe3.x + pipe3.width - 3, 0, "pipe");
 }
 
-function create() {
-  game.physics.startSystem(Phaser.Physics.ARCADE);
-  bucket = game.add.sprite(30, 480, 'bucket')
-  makePipes();
-  game.physics.arcade.enable(bucket);
-  bucket.body.collideWorldBounds = true;
-  bucket.body.immovable = true;
-  game.physics.arcade.enable(emitter);
-  drawScore();
-  drawTimer();
-}
 
 function makeRainDrop(radius) {
   var graphics = game.add.graphics(10, 10);
@@ -136,4 +125,24 @@ function makeRainDrop(radius) {
   txt = graphics.generateTexture();
   graphics.destroy();
   return txt;
+}
+
+function create() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+  bucket = game.add.sprite(30, 480, 'bucket')
+  makePipes();
+  game.physics.arcade.enable(bucket);
+  bucket.body.collideWorldBounds = true;
+  bucket.body.immovable = true;
+  game.physics.arcade.enable(emitter);
+  drawScore();
+  drawTimer();
+  var timer = game.time.create();
+  timer.loop(1000, function() {
+    GameTime -= 1;
+    if (GameTime <= 0) {
+      timer.stop();
+    }
+  });
+  timer.start();
 }
