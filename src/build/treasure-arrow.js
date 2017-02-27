@@ -16,6 +16,11 @@ function update() {
 }
 
 function changeItem(event, index) {
+  if (index == 2) {
+    var thing = sprites[index];
+    console.log("got thing", thing);
+    thing.body.velocity.x += 5;
+  }
   item = sprites[index];
 }
 
@@ -40,6 +45,7 @@ function drawItems() {
   sprites.push(game.add.sprite(665,200,'hat'));
   sprites.push(game.add.sprite(150,413,'sail'));
   sprites.push(game.add.sprite(209,200,'skull'));
+  game.physics.enable(sprites[2], Phaser.Physics.ARCADE);
   sprites.push(game.add.sprite(340,70,'tower'));
   sprites.push(game.add.sprite(505,284,'treasure'));
   item = sprites[0];
@@ -47,5 +53,6 @@ function drawItems() {
 
 function create() {
   var bg = game.add.image(0,0,'bg');
-  drawItems()
+  drawItems();
+  // game.physics.startSystem(Phaser.Physics.ARCADE);
 }
